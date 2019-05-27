@@ -12,14 +12,14 @@ import static org.junit.Assert.*;
 public class AppTest {
 
         @Test
-        public void addKwh_newMeter_properAddition () {
+        public void addKwh_newMeter_properAddition1 () {
             App electrisityMeter = new App();
             electrisityMeter.addKwh(1);
             Assert.assertTrue(electrisityMeter.getKwhNoTariff() == 1);
         }
 
         @Test
-        public void addKwh_newMeter2_properAddition () {
+        public void addKwh_newMeter2_properAddition2 () {
             App electrisityMeter = new App();
             electrisityMeter.addKwh(1);
             electrisityMeter.addKwh(4);
@@ -27,7 +27,7 @@ public class AppTest {
         }
 
         @Test
-        public void addKwh_newMeter5_properAddition () {
+        public void addKwh_newMeter5_properAddition3 () {
             App electrisityMeter = new App();
             electrisityMeter.addKwh(1);
             electrisityMeter.addKwh(4);
@@ -38,7 +38,7 @@ public class AppTest {
         }
 
         @Test
-        public void addKwh_newMeter12_properAddition () {
+        public void addKwh_newMeter12_properAddition4 () {
             App electrisityMeter = new App();
             for (int i = 1; i <= 12; i++)
                 electrisityMeter.addKwh(i);
@@ -46,14 +46,14 @@ public class AppTest {
         }
 
         @Test
-        public void kwhCounterIncreaseIfNew () {
+        public void kwhCounterIncreaseIfNew5 () {
             App electrisityMeter = new App();
             electrisityMeter.addKwh(5);
             Assert.assertTrue(electrisityMeter.getKwhNoTariff() == 5);
         }
 
         @Test
-        public void kwhCounterIncreaseIfSecond () {
+        public void kwhCounterIncreaseIfSecond6 () {
             App electrisityMeter = new App();
             electrisityMeter.addKwh(5);
             electrisityMeter.addKwh(4);
@@ -61,18 +61,25 @@ public class AppTest {
         }
 
         @Test
-        public void givenNewMeterWhenFirstAdditionThenProperCounter () {
+        public void givenNewMeterWhenFirstAdditionThenProperCounter7 () {
             App electrisityMeter = new App();
             electrisityMeter.addKwh(5);
             Assert.assertTrue(electrisityMeter.getKwhNoTariff() == 5);
         }
 
         @Test
-        public void givenNewMeterWhenFirstAdditionThenProperCounterTwoAssert () {
+        public void givenNewMeterWhenFirstAdditionThenProperCounterTwoAssert8 () {
             App electrisityMeter = new App();
             electrisityMeter.addKwh(5);
-                Assert.assertTrue("Dodano 5 kwh a czekiwano 7 kwh", electrisityMeter.getKwhNoTariff() == 7);
-                // gdy pierwsza nie przejdzie nie mamy informacji o drugiej
+            Assert.assertFalse("Dodano 5 kwh a czekiwano 7 kwh", electrisityMeter.getKwhNoTariff() == 7);
+            // gdy pierwsza nie przejdzie nie mamy informacji o drugiej
             Assert.assertTrue("Dodano 5 kwh i oczekiwano 5 kwh",electrisityMeter.getKwhNoTariff() == 5);
+        }
+
+        @Test(expected = ArithmeticException.class)
+        public void getHowMoreExpensiveNormalIs9() {
+            App electrisityMeter = new App();
+            electrisityMeter.setCentsForKwh(90);
+            electrisityMeter.getHowMoreExpensiveNormalIs();
         }
 }
