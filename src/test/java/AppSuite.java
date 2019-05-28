@@ -1,6 +1,7 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import pl.robwork.AppTest;
+import pl.robwork.ExistAppTest;
+import pl.robwork.NewAppTest;
 import pl.robwork.TwoAppTest;
 
 /**
@@ -13,7 +14,8 @@ import pl.robwork.TwoAppTest;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-        AppTest.class,
+        NewAppTest.class,
+        ExistAppTest.class,
 //        AppTest.class,     gdy mamy @BeforeClass i init() robimy testy na tej samej intencji (bazie danych)
         TwoAppTest.class
 })
