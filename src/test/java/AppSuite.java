@@ -14,6 +14,7 @@ import pl.robwork.TwoAppTest;
 
 @Suite.SuiteClasses({
         AppTest.class,
+//        AppTest.class,     gdy mamy @BeforeClass i init() robimy testy na tej samej intencji (bazie danych)
         TwoAppTest.class
 })
 
