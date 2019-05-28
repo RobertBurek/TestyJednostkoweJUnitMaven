@@ -9,6 +9,7 @@ import org.junit.*;
 //@Ignore("Pakietowo zignorowany zestaw testów!!!")
 public class ExistAppTest {
 
+
     public static App electrisityMeter;
 
     @BeforeClass

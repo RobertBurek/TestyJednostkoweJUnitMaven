@@ -70,6 +70,8 @@ public class App {
         this.electricityTariffEndHour = electricityTariffEndHour;
     }
 
+
+
     public void reset() {
         this.kwhNoTariff = 0;
         this.centsForKwh = 0;
