@@ -7,6 +7,8 @@ import java.util.Calendar;
  */
 public class App {
 
+    TariffProvider tp;   //interfejs do sprawdzania czy jest ustawiona inna taryfa
+
     private float kwhNoTariff = 0;
     private int centsForKwh = 0;
 
@@ -17,13 +19,29 @@ public class App {
     private int electricityTariffStartHour = 0;
     private int electricityTariffEndHour = 0;
 
+    public App() {
+        tp = new TariffProvider() {
+            @Override
+            public boolean isTariffNow() {
+                Calendar rightNow = Calendar.getInstance();
+                int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+                return hour > electricityTariffStartHour && hour < electricityTariffEndHour;
+            }
+        };
+    }
 
-    //raczej nie testujemy prywatnych metod
-    //private boolean isTariffNow() {
+//    @Inject   wstrzykiwanie implementacji
+    public App(TariffProvider tp) {
+        this.tp = tp;
+    }
+
+//    raczej nie testujemy prywatnych metod
+//    private boolean isTariffNow() {
     public boolean isTariffNow() {
-        Calendar rightNow = Calendar.getInstance();
-        int hour = rightNow.get(Calendar.HOUR_OF_DAY);
-        return hour > electricityTariffStartHour && hour < electricityTariffEndHour;
+        return tp.isTariffNow();
+//        Calendar rightNow = Calendar.getInstance();
+//        int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+//        return hour > electricityTariffStartHour && hour < electricityTariffEndHour;
     }
 
 
