@@ -19,7 +19,8 @@ public class App {
 
 
     //raczej nie testujemy prywatnych metod
-    private boolean isTariffNow() {
+    //private boolean isTariffNow() {
+    public boolean isTariffNow() {
         Calendar rightNow = Calendar.getInstance();
         int hour = rightNow.get(Calendar.HOUR_OF_DAY);
         return hour > electricityTariffStartHour && hour < electricityTariffEndHour;
