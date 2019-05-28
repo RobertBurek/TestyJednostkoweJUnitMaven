@@ -18,11 +18,12 @@ public class App {
     private int electricityTariffEndHour = 0;
 
 
-    public boolean isTariffNow() {
+    //raczej nie testujemy prywatnych metod
+    private boolean isTariffNow() {
         Calendar rightNow = Calendar.getInstance();
         int hour = rightNow.get(Calendar.HOUR_OF_DAY);
         return hour > electricityTariffStartHour && hour < electricityTariffEndHour;
-    };
+    }
 
 
     public void addKwh(float kwhToAdd) {
